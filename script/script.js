@@ -45,6 +45,13 @@ function show_cupcakes() {
   }
 }
 
+function deliveryError(){
+ delivery.style.color = "green";
+ delivery.style.borderColor = "green";
+ delivery.innerHTML = "Good";
+}
+
+
 let submit = document.getElementById("save-data");
 
 submit.addEventListener("click", validate);
@@ -98,9 +105,7 @@ function validate() {
     delivery.innerHTML="None isn't Accepted";
   }
     else{
-    delivery.style.color="green";
-    delivery.style.borderColor="green";
-    delivery.innerHTML="Good";
+   deliveryError();
   }
   if (delivery.value === "4:00pm" && type.value === "chocolate") {
     delivery_error.innerHTML="Sorry, we are closed at 4:00pm for chocolate cupcakes";
@@ -129,10 +134,6 @@ function validate() {
 function show_storage() {
   let cus_name = $("#customer-name").val();
   let welcome = document.getElementById("welcome");
-
-  //write code that shows the name from local storage
-  // let name=localStorage.getItem("customer-name");
-  // alert(name);
     cus_name = JSON.parse(localStorage.getItem("customer-name"));
     welcome.innerHTML = "Welcome " + cus_name;
 }
